@@ -1,2 +1,6 @@
+# xmake
 build/
 .xmake/
+# ccls
+.clangd/
+compile_commands.json
