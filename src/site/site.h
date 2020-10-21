@@ -1,5 +1,5 @@
 
-namespace Site{
+namespace Site {
 
   void Init();
   void Tick();

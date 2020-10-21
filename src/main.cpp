@@ -116,7 +116,7 @@ void main_loop( void * ) {
   ImGuiIO &io = ImGui::GetIO();
   glViewport( 0, 0, ( int )io.DisplaySize.x, ( int )io.DisplaySize.y );
 
-  static ImVec4 clear_color = ImVec4( 0.45f, 0.55f, 0.60f, 1.00f );
+  static ImVec4 clear_color = ImVec4( 0.66f, 0.66f, 0.66f, 1.00f );
   glClearColor( clear_color.x, clear_color.y, clear_color.z, clear_color.w );
   glClear( GL_COLOR_BUFFER_BIT );
 

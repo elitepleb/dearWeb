@@ -52,7 +52,9 @@ namespace Site {
       }
     } );
 
-    Lua.set_function( "delta", [](){ return ImGui::GetIO().DeltaTime; } );
+    Lua.set_function( "delta", []() {
+      return ImGui::GetIO().DeltaTime;
+    } );
   }
 
   class splitter : public std::string {};
@@ -66,13 +68,13 @@ namespace Site {
 
     std::istringstream iss( error );
     std::vector<std::string> tokens(
-      (std::istream_iterator<splitter>( iss )),
+      ( std::istream_iterator<splitter>( iss ) ),
       std::istream_iterator<splitter>()
     );
 
-    for(auto token : tokens){
-      if( std::all_of(token.begin(), token.end(), isdigit)){
-        Editor.SetErrorMarkers( { { std::stoi(token), error} } );
+    for( auto token : tokens ) {
+      if( std::all_of( token.begin(), token.end(), isdigit ) ) {
+        Editor.SetErrorMarkers( { { std::stoi( token ), error} } );
       }
     }
   }

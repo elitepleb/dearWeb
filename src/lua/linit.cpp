@@ -54,12 +54,13 @@ static const luaL_Reg loadedlibs[] = {
 };
 
 
-LUALIB_API void luaL_openlibs (lua_State *L) {
+LUALIB_API void luaL_openlibs( lua_State *L ) {
   const luaL_Reg *lib;
+
   /* "require" functions from 'loadedlibs' and set results to global table */
-  for (lib = loadedlibs; lib->func; lib++) {
-    luaL_requiref(L, lib->name, lib->func, 1);
-    lua_pop(L, 1);  /* remove lib */
+  for( lib = loadedlibs; lib->func; lib++ ) {
+    luaL_requiref( L, lib->name, lib->func, 1 );
+    lua_pop( L, 1 ); /* remove lib */
   }
 }
 
