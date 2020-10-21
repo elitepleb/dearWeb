@@ -1747,7 +1747,7 @@ struct ImGuiTabBar
     ImS8                TabsActiveCount;        // Number of tabs submitted this frame.
     bool                WantLayout;
     bool                VisibleTabWasSubmitted;
-    short               LastTabItemIdx;         // Index of last BeginTabItem() tab for use by EndTabItem() 
+    short               LastTabItemIdx;         // Index of last BeginTabItem() tab for use by EndTabItem()
     ImVec2              FramePadding;           // style.FramePadding locked at the time of BeginTabBar()
     ImGuiTextBuffer     TabsNames;              // For non-docking tab bar we re-append names in a contiguous buffer.
 
