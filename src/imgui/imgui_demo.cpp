@@ -315,7 +315,7 @@ void ImGui::ShowDemoWindow( bool *p_open ) {
   static bool no_move = false;
   static bool no_resize = false;
   static bool no_collapse = false;
-  static bool no_close = false;
+  static bool no_close = true;
   static bool no_nav = false;
   static bool no_background = false;
   static bool no_bring_to_front = false;

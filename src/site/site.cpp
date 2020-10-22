@@ -4,7 +4,6 @@
 #include "../sol/sol.h"
 #include "../editor/TextEditor.h"
 #include "background.h"
-#include "ctre.hpp"
 
 namespace Site {
 
@@ -14,8 +13,6 @@ namespace Site {
 
   void Init() {
     Lua.open_libraries();
-
-    Editor.SetLanguageDefinition( TextEditor::LanguageDefinition::Lua() );
     Editor.SetPalette( TextEditor::GetLightPalette() );
 
     Editor.SetText( std::string(
@@ -115,13 +112,15 @@ namespace Site {
     Script();
 
     ImGui::SetNextWindowPos( ImVec2( 20, 20 ), ImGuiCond_Once );
-    ImGui::SetNextWindowSize( ImVec2( 600, 400 ), ImGuiCond_Once );
+    ImGui::SetNextWindowSize( ImVec2( 600, 600 ), ImGuiCond_Once );
 
     if( ImGui::Begin( "Editor" ) ) {
       Editor.Render( "#Editor", ImVec2( -1, ImGui::GetTextLineHeight() * 32 ) );
-      auto cpos = Editor.GetCursorPosition();
+      ImGui::InputTextMultiline("#output", output.data(), output.length(), ImVec2(-1, -1), ImGuiInputTextFlags_ReadOnly );
       Editor.SetErrorMarkers( { } );
     }
+
+    output.clear();
 
     ImGui::End();
 
