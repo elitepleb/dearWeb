@@ -45,13 +45,16 @@ namespace Site {
     // overwrite print to have in window output
     Lua.set_function( "print", []( sol::variadic_args va ) {
       for( auto var : va ) {
-        output += var.get<std::string>() + '\n';
+        output += var.get<std::string>();
       }
     } );
 
-    Lua.set_function( "delta", []() {
+    sol::table util = Lua["util"].get_or_create<sol::table>();
+
+		util.set_function( "delta", []() {
       return ImGui::GetIO().DeltaTime;
     } );
+
   }
 
   class splitter : public std::string {};
@@ -116,7 +119,7 @@ namespace Site {
 
     if( ImGui::Begin( "Editor" ) ) {
       Editor.Render( "#Editor", ImVec2( -1, ImGui::GetTextLineHeight() * 32 ) );
-      ImGui::InputTextMultiline("#output", output.data(), output.length(), ImVec2(-1, -1), ImGuiInputTextFlags_ReadOnly );
+      ImGui::InputTextMultiline( "#output", output.data(), output.length(), ImVec2( -1, -1 ), ImGuiInputTextFlags_ReadOnly );
       Editor.SetErrorMarkers( { } );
     }
 

@@ -86,7 +86,7 @@ namespace Background {
       Draw->AddText( ImVec2( x, y ), __builtin_bswap32( color ), text.c_str() );
     } );
     //  beziercurve              (const ImVec2& p1, const ImVec2& p2, const ImVec2& p3, const ImVec2& p4, ImU32 col, float thickness, int num_segments = 0);
-    draw.set_function( "quad", []( int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4, uint32_t color, float thick ) {
+    draw.set_function( "beziercurve", []( int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4, uint32_t color, float thick ) {
       Draw->AddBezierCurve( ImVec2( x1, y1 ), ImVec2( x2, y2 ), ImVec2( x3, y3 ), ImVec2( x4, y4 ), __builtin_bswap32( color ), thick, 0 );
     } );
 

@@ -45,7 +45,6 @@ target("toy")
 	add_deps("site")
 
 	--html file to embed in
-	set_filename("toy.html") -- temp fix for https://github.com/xmake-io/xmake/issues/999
 	add_ldflags("--shell-file ./src/shell_minimal.html")
 
 	-- SDL2
