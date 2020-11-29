@@ -7,9 +7,9 @@
 
 namespace Site {
 
-  sol::state Lua;
-  TextEditor Editor;
-  std::string output;
+  static sol::state Lua;
+  static TextEditor Editor;
+  static std::string output;
 
   void Init() {
     Lua.open_libraries();
@@ -40,7 +40,7 @@ namespace Site {
                       "end\n"
                     ) );
     sol::table draw = Lua["draw"].get_or_create<sol::table>();
-    Background::LuaBindings( draw );
+    DrawLuaBindings( draw );
 
     // overwrite print to have in window output
     Lua.set_function( "print", []( sol::variadic_args va ) {
@@ -110,7 +110,7 @@ namespace Site {
   }
 
   void Tick() {
-    Background::Begin();
+    Background background;
 
     Script();
 
@@ -122,12 +122,9 @@ namespace Site {
       ImGui::InputTextMultiline( "#output", output.data(), output.length(), ImVec2( -1, -1 ), ImGuiInputTextFlags_ReadOnly );
       Editor.SetErrorMarkers( { } );
     }
-
-    output.clear();
-
     ImGui::End();
 
-    Background::End();
+    output.clear();
   }
 
 }
